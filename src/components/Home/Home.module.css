@@ -1,0 +1,13 @@
+.home__title {
+  margin: 0;
+  padding: 0;
+  padding: 20px;
+}
+.container {
+  height: 100vh;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  font-size: 40;
+  color: #010101;
+}

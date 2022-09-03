@@ -6,7 +6,7 @@ import {
 } from 'redux/contactsApi';
 import css from './ContactForm.module.css';
 
-export default function ContactForm() {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [createContact] = useCreateContactMutation();
@@ -59,4 +59,5 @@ export default function ContactForm() {
       <button type="submit">Add contact</button>
     </form>
   );
-}
+};
+export default ContactForm;

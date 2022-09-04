@@ -1,27 +1,29 @@
 import { useState } from 'react';
-// import {
-//   useCreateUserMutation,
-//   useGetUserItemsQuery,
-// } from 'redux/userApi';
+import { useNavigate } from 'react-router-dom';
+import { useSignupMutation } from 'redux/authApi';
 import css from './SignUp.module.css';
 
 const SignUp = () => {
+  const [signup, status] = useSignupMutation();
+  const { isLoading } = status;
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const handleChangeName = e => setName(e.currentTarget.value);
   const handleChangeEmail = e => setEmail(e.currentTarget.value);
   const handleChangePassword = e => setPassword(e.currentTarget.value);
 
   const handleSubmitUser = e => {
     e.preventDefault();
-    const user = {
+    const credentials = {
       name,
       email,
       password,
     };
-    console.log(user);
+    signup(credentials);
+    navigate('/users/login');
+    e.target.reset();
   };
   return (
     <div className={css.container}>
@@ -61,7 +63,9 @@ const SignUp = () => {
             required
           />
         </label>
-        <button type="submit">SignUp</button>
+        <button type="submit" disabled={isLoading}>
+          SignUp
+        </button>
       </form>
     </div>
   );

@@ -15,20 +15,20 @@ export const contactsSlice = createSlice({
     deleteContact: (state, { payload }) => {
       state.items = state.items.filter(item => item.id !== payload);
     },
-    extraReducers: builder => {
-      builder.addMatcher(
-        contactsApi.endpoints.getContactsItems.matchFulfilled,
-        (state, { payload }) => {
-          const { user, token } = payload;
-          state.email = user.email;
-          state.name = user.name;
-          state.token = token;
-        }
-      );
+    setContact: (state, action) => {
+      state.items = [...state.items, action.payload];
     },
+  },
+  extraReducers: builder => {
+    builder.addMatcher(
+      contactsApi.endpoints.getContactsItems.matchFulfilled,
+      (state, action) => {
+        state.items = action.payload;
+      }
+    );
   },
 });
 
-export const { addContacts, deleteContact } = contactsSlice.actions;
+export const { addContacts, setContact, deleteContact } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

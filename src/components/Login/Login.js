@@ -1,25 +1,29 @@
 import { useState } from 'react';
 import { useLoginMutation } from 'redux/authApi';
 import css from './Login.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [login, status] = useLoginMutation();
   const { isLoading } = status;
-  const [email, setEmail] = useState('a222crov444cxcvss@mail.com');
-  const [password, setPassword] = useState('122223333bvcbbcbcb');
-
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   const handleChangeEmail = e => setEmail(e.currentTarget.value);
   const handleChangePassword = e => setPassword(e.currentTarget.value);
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    if (!email || !password) {
+      return;
+    }
     const credentials = {
       email,
       password,
     };
     login(credentials);
-    console.log(status);
+    navigate('/contacts');
+    e.target.reset();
   };
   return (
     <div className={css.container}>

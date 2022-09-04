@@ -14,13 +14,13 @@ const Layout = () => {
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? css.active : css.navLink)}
-            to="/login"
+            to="users/login"
           >
             Login
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? css.active : css.navLink)}
-            to="/register"
+            to="users/register"
           >
             SignUp
           </NavLink>

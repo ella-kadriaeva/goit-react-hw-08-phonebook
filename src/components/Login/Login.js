@@ -1,59 +1,59 @@
 import { useState } from 'react';
-import { nanoid } from 'nanoid';
-// import {
-//   useCreateContactMutation,
-//   useGetContactsItemsQuery,
-// } from 'redux/contactsApi';
+import { useLoginMutation } from 'redux/authApi';
 import css from './Login.module.css';
 
 const Login = () => {
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  //   const [createUser] = useCreateUserMutation();
-
-  //   const { data: items = [] } = useGetContactsItemsQuery();
-
-  const handleChangeUser = e => setUser(e.currentTarget.value);
+  const [login, status] = useLoginMutation();
+  const { isLoading } = status;
+  const [email, setEmail] = useState('a222crov444cxcvss@mail.com');
+  const [password, setPassword] = useState('122223333bvcbbcbcb');
 
   const handleChangeEmail = e => setEmail(e.currentTarget.value);
+  const handleChangePassword = e => setPassword(e.currentTarget.value);
 
-  const handleSubmitLogin = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const data = {
-      id: nanoid(),
-      user,
+
+    const credentials = {
       email,
+      password,
     };
+    login(credentials);
+    console.log(status);
   };
   return (
     <div className={css.container}>
-      <h2 className={css.title}>Login</h2>
-      <form className={css.form} onSubmit={handleSubmitLogin}>
-        <label htmlFor={nanoid()}>Name</label>
-        <input
-          type="text"
-          name="name"
-          value={user}
-          onChange={handleChangeUser}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          id={nanoid()}
-        />
-        <label htmlFor={nanoid()}>E-mail</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChangeEmail}
-          pattern=".+@globex\.com"
-          placeholder="user@example.gov"
-          title="Enter email"
-          required
-          id={nanoid()}
-        />
-        <button type="submit">Login</button>
-      </form>
+      <fieldset>
+        <legend className={css.title}>Login</legend>
+        <form className={css.form} onSubmit={handleSubmit}>
+          <label>
+            <span>E-mail</span>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChangeEmail}
+              placeholder="user@example.gov"
+              required
+            />
+          </label>
+          <label>
+            <span>Password</span>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChangePassword}
+              placeholder="Enter password"
+              title="Enter password"
+              required
+            />
+          </label>
+          <button type="submit" disabled={isLoading}>
+            Login
+          </button>
+        </form>
+      </fieldset>
     </div>
   );
 };

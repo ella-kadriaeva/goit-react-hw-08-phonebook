@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
+import { useCurrentUserQuery } from '../redux/authApi';
 import Loader from './Loader/Loader';
 const Layout = lazy(() => import('./Layout/Layout'));
 const SignUp = lazy(() => import('./SignUp/SignUp'));
@@ -8,6 +9,8 @@ const Contacts = lazy(() => import('./Contacts/Contacts'));
 const Login = lazy(() => import('./Login/Login'));
 
 export default function App() {
+  const { data } = useCurrentUserQuery();
+
   return (
     <div>
       <Suspense fallback={<Loader />}>

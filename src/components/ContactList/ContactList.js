@@ -1,6 +1,14 @@
 import React from 'react';
 import css from './ContactList.module.css';
 import ContactListItem from '../ContactListItem/ContactListItem';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import Paper from '@mui/material/Paper';
+import TableCell from '@mui/material/TableCell';
+
+import TableRow from '@mui/material/TableRow';
 import { useSelector } from 'react-redux';
 import {
   useGetContactsItemsQuery,
@@ -22,16 +30,29 @@ export default function ContactList() {
 
   const handleDeleteContact = contactId => deleteContact(contactId);
   return (
-    <ul className={css.list}>
-      {filtredContacts.map(({ id, name, phone }) => (
-        <ContactListItem
-          key={id}
-          name={name}
-          number={phone}
-          itemId={id}
-          deleteContacts={handleDeleteContact}
-        />
-      ))}
-    </ul>
+    <div className={css.table}>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 400 }} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell align="right">Phonenumber</TableCell>
+              <TableCell align="right"></TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filtredContacts.map(({ id, name, number }) => (
+              <ContactListItem
+                key={id}
+                name={name}
+                number={number}
+                itemId={id}
+                deleteContacts={handleDeleteContact}
+              />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }

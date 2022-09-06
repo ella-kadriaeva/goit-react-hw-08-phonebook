@@ -1,8 +1,12 @@
 form {
+  margin: 0 auto;
+  margin-top: 180px;
+  margin-left: 100px;
   width: 80%;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgb(185, 185, 185);
+  border: 2px solid rgb(29, 8, 121);
+  border-radius: 4px;
   padding: 20px;
 }
 label {
@@ -17,19 +21,16 @@ button {
 }
 input {
   width: 90%;
+  display: flex;
 }
 .container {
+  margin-top: 150px;
   width: 400px;
   height: 40vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   font-size: 40;
   color: #010101;
   margin-left: 80px;
-}
-.title {
-  margin: 0;
-  padding: 0;
-  padding: 20px;
 }

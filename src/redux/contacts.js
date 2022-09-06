@@ -8,27 +8,28 @@ const initialState = {
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
-  reducers: {
-    addContacts: (state, { payload: item }) => {
-      state.items = [item, ...state.items];
-    },
-    deleteContact: (state, { payload }) => {
-      state.items = state.items.filter(item => item.id !== payload);
-    },
-    setContact: (state, action) => {
-      state.items = [...state.items, action.payload];
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
-    builder.addMatcher(
-      contactsApi.endpoints.getContactsItems.matchFulfilled,
-      (state, action) => {
-        state.items = action.payload;
-      }
-    );
+    builder
+      .addMatcher(
+        contactsApi.endpoints.getContactsItems.matchFulfilled,
+        (state, action) => {
+          state.items = action.payload;
+        }
+      )
+      .addMatcher(
+        contactsApi.endpoints.deleteContact.matchFulfilled,
+        (state, { payload }) => {
+          state.items = state.items.filter(item => item.id !== payload);
+        }
+      )
+      .addMatcher(
+        contactsApi.endpoints.createContact.matchFulfilled,
+        (state, { payload: item }) => {
+          state.items = [item, ...state.items];
+        }
+      );
   },
 });
-
-export const { addContacts, setContact, deleteContact } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

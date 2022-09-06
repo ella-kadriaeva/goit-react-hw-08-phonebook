@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[781],{1781:function(e,t,r){r.r(t),r.d(t,{default:function(){return n}});var o="Home_home__title__BrvCc",a=r(184),n=function(){return(0,a.jsx)(a.Fragment,{children:(0,a.jsx)("h2",{className:o,children:"Never lose your cotacts again. Made your the phonebook"})})}}}]);
+//# sourceMappingURL=781.49f20f0c.chunk.js.map

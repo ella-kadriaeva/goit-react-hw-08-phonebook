@@ -3,9 +3,15 @@ import css from './Home.module.css';
 const Home = () => {
   return (
     <>
-      <h2 className={css.home__title}>
-        Never lose your cotacts again. Made your the phonebook
-      </h2>
+      <div className={css.wrap}>
+        <div class={css.apps}>
+          <div class={css.title}>Save your contacts in Phonebook</div>
+          <div class={css.app}></div>
+          <div class={css.app}></div>
+          <div class={css.app}></div>
+          <div class={css.app}></div>
+        </div>
+      </div>
     </>
   );
 };

@@ -16,16 +16,15 @@ import {
 } from '@mui/material';
 
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import { useLogoutMutation } from 'redux/authApi';
 
 const Contacts = () => {
   const { token } = useSelector(state => state.user);
   const [logout] = useLogoutMutation();
-  const navigate = useNavigate();
+
   const onLogoutClick = () => {
     logout();
-    navigate('/');
   };
   return (
     <>
@@ -54,7 +53,7 @@ const Contacts = () => {
                     <NavLink
                       className={css.navLink}
                       onClick={onLogoutClick}
-                      to={'/logout'}
+                      to={'/'}
                     >
                       Logout
                     </NavLink>

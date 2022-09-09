@@ -49,7 +49,7 @@ const SignUp = () => {
                 helperText="Please enter your name"
                 id="demo-helper-text-aligned"
                 label="Name"
-                autocomplete="username "
+                autoComplete="username "
               />
             </label>
             <label>
@@ -62,7 +62,7 @@ const SignUp = () => {
                 helperText="Please enter your e-mail "
                 id="demo-helper-text-aligned"
                 label="E-mail"
-                autocomplete="username "
+                autoComplete="username "
               />
             </label>
             <label>
@@ -76,7 +76,7 @@ const SignUp = () => {
                 onChange={handleChangePassword}
                 title="Enter password"
                 required
-                autocomplete="new-password"
+                autoComplete="new-password"
               />
             </label>
             <Stack spacing={2} direction="row">

@@ -26,18 +26,19 @@ export const userApi = createApi({
         method: 'POST',
         body: payload,
       }),
-      invalidatesTags: ['user'],
+      invalidatesTags: ['User'],
     }),
     logout: builder.mutation({
       query: () => ({
         url: 'logout',
         method: 'POST',
       }),
+      invalidatesTags: ['User'],
     }),
     currentUser: builder.query({
       query: 'current',
     }),
-    invalidatesTags: ['user'],
+    invalidatesTags: ['User'],
   }),
 });
 

@@ -15,24 +15,21 @@ import {
   Box,
 } from '@mui/material';
 
-import { useGetContactsItemsQuery } from 'redux/contactsApi';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from 'redux/authApi';
 
 const Contacts = () => {
-  const { data, isFetching } = useGetContactsItemsQuery();
   const { token } = useSelector(state => state.user);
   const [logout] = useLogoutMutation();
   const navigate = useNavigate();
   const onLogoutClick = () => {
-    logout(token);
+    logout();
     navigate('/');
   };
   return (
     <>
-      {isFetching && <div>Loading...</div>}
-      {data && (
+      {token && (
         <>
           <AppBar>
             <Container maxWidth="sm">
@@ -51,13 +48,13 @@ const Contacts = () => {
                       </IconButton>
                       Phonebook
                     </NavLink>
-                    <NavLink className={css.active} to={'/'}>
+                    <NavLink className={css.active} to={'/contacts'}>
                       My contacts
                     </NavLink>
                     <NavLink
                       className={css.navLink}
                       onClick={onLogoutClick}
-                      to={'/users/login'}
+                      to={'/logout'}
                     >
                       Logout
                     </NavLink>

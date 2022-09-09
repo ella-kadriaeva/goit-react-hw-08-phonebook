@@ -14,7 +14,7 @@ export const userApi = createApi({
   endpoints: builder => ({
     signup: builder.mutation({
       query: payload => ({
-        url: '/signup',
+        url: 'signup',
         method: 'POST',
         body: payload,
       }),
@@ -29,10 +29,9 @@ export const userApi = createApi({
       invalidatesTags: ['user'],
     }),
     logout: builder.mutation({
-      query: payload => ({
-        url: '/logout',
+      query: () => ({
+        url: 'logout',
         method: 'POST',
-        body: payload,
       }),
     }),
     currentUser: builder.query({

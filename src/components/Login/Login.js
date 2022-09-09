@@ -48,6 +48,7 @@ const Login = () => {
                     helperText="Please enter your e-mail "
                     id="demo-helper-text-aligned"
                     label="E-mail"
+                    autocomplete="username "
                   />
                 </label>
                 <label>
@@ -61,6 +62,7 @@ const Login = () => {
                     onChange={handleChangePassword}
                     title="Enter password"
                     required
+                    autocomplete="new-password"
                   />
                 </label>
                 <Stack spacing={2} direction="row">

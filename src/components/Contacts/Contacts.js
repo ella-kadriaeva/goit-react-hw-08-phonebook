@@ -21,7 +21,6 @@ import { useNavigate } from 'react-router-dom';
 import { useLogoutMutation } from 'redux/authApi';
 
 const Contacts = () => {
-  useGetContactsItemsQuery();
   const { data, isFetching } = useGetContactsItemsQuery();
   const { token } = useSelector(state => state.user);
   const [logout] = useLogoutMutation();

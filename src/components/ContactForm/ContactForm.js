@@ -22,7 +22,10 @@ const ContactForm = () => {
       name,
       number,
     };
-    const sameName = items.map(item => item.name).includes(data.name);
+
+    const sameName = items
+      .map(item => item.name.toLowerCase())
+      .includes(data.name.toLowerCase());
     if (sameName) {
       alert(`${data.name} is already in contacts. Do you want to change data?`);
       setName('');

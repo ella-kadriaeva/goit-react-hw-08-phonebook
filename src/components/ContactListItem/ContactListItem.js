@@ -2,12 +2,8 @@ import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import PropTypes from 'prop-types';
-// import css from './ContactListItem.module.css';
-
 import TableCell from '@mui/material/TableCell';
-
 import TableRow from '@mui/material/TableRow';
 
 export default function ContactListItem({
@@ -18,7 +14,7 @@ export default function ContactListItem({
 }) {
   return (
     <TableRow
-      itemId={itemId}
+      id={itemId}
       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
     >
       <TableCell component="th" scope="row">

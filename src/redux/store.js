@@ -16,15 +16,6 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-const persistContactsConfig = {
-  key: 'contacts',
-  version: 1,
-  storage,
-};
-const persistedContactsReducer = persistReducer(
-  persistContactsConfig,
-  contacts
-);
 const persistUserConfig = {
   key: 'user',
   version: 1,
@@ -37,7 +28,7 @@ export const store = configureStore({
     filter,
     [contactsApi.reducerPath]: contactsApi.reducer,
     user: persistedUserReducer,
-    contacts: persistedContactsReducer,
+    contacts,
     [userApi.reducerPath]: userApi.reducer,
   },
 

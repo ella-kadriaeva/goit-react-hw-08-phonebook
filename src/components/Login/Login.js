@@ -12,7 +12,6 @@ const Login = () => {
   const navigate = useNavigate();
   const handleChangeEmail = e => setEmail(e.currentTarget.value);
   const handleChangePassword = e => setPassword(e.currentTarget.value);
-  console.log(status);
   const handleSubmit = async e => {
     e.preventDefault();
     if (!email || !password) {

@@ -5,8 +5,10 @@ export const userApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com/users/',
     prepareHeaders: (headers, { getState }) => {
-      const { token = '' } = getState().user;
-      headers.set('Autorization', token);
+      const token = getState().user.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
       return headers;
     },
   }),

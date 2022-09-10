@@ -6,6 +6,8 @@ const Home = lazy(() => import('./Home/Home'));
 const Contacts = lazy(() => import('./Contacts/Contacts'));
 const Login = lazy(() => import('./Login/Login'));
 const Layout = lazy(() => import('./Layout/Layout'));
+const NotFound = lazy(() => import('./NotFound/NotFound'));
+
 export default function App() {
   return (
     <Suspense fallback={<Loader />}>
@@ -17,6 +19,7 @@ export default function App() {
           <Route path="users/register" element={<SignUp />} />
         </Route>
         <Route path="contacts" element={<Contacts />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );

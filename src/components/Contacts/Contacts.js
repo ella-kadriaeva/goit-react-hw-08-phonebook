@@ -5,7 +5,7 @@ import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-
+import NotFound from '../NotFound/NotFound';
 import {
   IconButton,
   Toolbar,
@@ -28,7 +28,7 @@ const Contacts = () => {
   };
   return (
     <>
-      {token && (
+      {token ? (
         <>
           <AppBar>
             <Container maxWidth="sm">
@@ -70,6 +70,8 @@ const Contacts = () => {
             </Box>
           </Container>
         </>
+      ) : (
+        <NotFound />
       )}
     </>
   );

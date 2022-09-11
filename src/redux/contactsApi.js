@@ -5,10 +5,10 @@ export const contactsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com/',
     prepareHeaders: (headers, { getState }) => {
-      const { token = '' } = getState().user;
-
-      headers.set('Authorization', token);
-
+      const token = getState().user.token;
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
       return headers;
     },
   }),

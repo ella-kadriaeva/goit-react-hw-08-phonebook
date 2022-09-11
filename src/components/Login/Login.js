@@ -3,28 +3,37 @@ import { useLoginMutation } from 'redux/authApi';
 import css from './Login.module.css';
 import { useNavigate } from 'react-router-dom';
 import { Container, Box, TextField, Stack, Button } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [login, status] = useLoginMutation();
-  const { isLoading } = status;
+  const { isLoading, isSuccess } = status;
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
   const handleChangeEmail = e => setEmail(e.currentTarget.value);
   const handleChangePassword = e => setPassword(e.currentTarget.value);
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!email || !password) {
-      return;
-    }
+
     const credentials = {
       email,
       password,
     };
     await login(credentials);
+    if (!isSuccess) {
+      setEmail('');
+      setPassword('');
+
+      toast.error('Invalid email or password');
+      return;
+    }
     navigate('/contacts');
-    e.target.reset();
   };
+
   return (
     <>
       {!isLoading && (
@@ -78,6 +87,7 @@ const Login = () => {
               </form>
             </div>
           </Box>
+          <ToastContainer />
         </Container>
       )}
     </>

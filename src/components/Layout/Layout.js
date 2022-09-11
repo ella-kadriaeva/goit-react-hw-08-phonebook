@@ -9,6 +9,8 @@ import {
   Container,
   Box,
 } from '@mui/material';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Layout = () => {
   return (
     <>
@@ -51,6 +53,7 @@ const Layout = () => {
         </Container>
       </AppBar>
       <Outlet />
+      <ToastContainer />
     </>
   );
 };

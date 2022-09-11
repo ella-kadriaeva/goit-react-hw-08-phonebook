@@ -16,10 +16,6 @@ export const userSlice = createSlice({
     builder.addMatcher(
       userApi.endpoints.login.matchFulfilled,
       (state, { payload }) => {
-        if (!payload.status === 200) {
-          state.token = null;
-          state.isLoggedIn = false;
-        }
         const { user, token } = payload;
         state.email = user.email;
         state.name = user.name;
@@ -43,15 +39,12 @@ export const userSlice = createSlice({
       }
     );
     builder.addMatcher(
-      userApi.endpoints.currentUser.matchRejected,
+      userApi.endpoints.currentUser.matchFulfilled,
       (state, { payload }) => {
-        if (payload.status === 401) {
-          state.token = null;
-        }
         const { user } = payload;
         state.name = user.name;
         state.email = user.email;
-        state.isLoggedIn = false;
+        state.isLoggedIn = true;
       }
     );
   },

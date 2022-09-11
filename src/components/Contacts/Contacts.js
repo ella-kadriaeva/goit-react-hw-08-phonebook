@@ -4,16 +4,8 @@ import css from './Contacts.module.css';
 import ContactForm from '../ContactForm/ContactForm';
 import Filter from '../Filter/Filter';
 import ContactList from '../ContactList/ContactList';
-import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-import NotFound from '../NotFound/NotFound';
-import {
-  IconButton,
-  Toolbar,
-  Typography,
-  AppBar,
-  Container,
-  Box,
-} from '@mui/material';
+
+import { Toolbar, Typography, AppBar, Container, Box } from '@mui/material';
 
 import { useSelector } from 'react-redux';
 
@@ -28,23 +20,14 @@ const Contacts = () => {
   };
   return (
     <>
-      {token ? (
+      {token && (
         <>
           <AppBar>
             <Container maxWidth="sm">
               <Box sx={{ bgcolor: 'inherit', height: '15vh' }}>
                 <Toolbar>
-                  <Typography variant="h6" component="div" sx={{ flexGrow: 2 }}>
+                  <Typography variant="h6" sx={{ flexGrow: 2 }}>
                     <NavLink className={css.navLink} to={'/'}>
-                      <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 1 }}
-                      >
-                        <ContactPhoneIcon />
-                      </IconButton>
                       Phonebook
                     </NavLink>
                     <NavLink className={css.active} to={'/contacts'}>
@@ -70,8 +53,6 @@ const Contacts = () => {
             </Box>
           </Container>
         </>
-      ) : (
-        <NotFound />
       )}
     </>
   );

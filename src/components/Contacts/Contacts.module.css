@@ -1,7 +1,7 @@
 .container {
   width: 400px;
   height: 20vh;
-  display: flex;
+
   flex-direction: column;
   align-items: center;
   font-size: 40;
@@ -11,8 +11,8 @@
 .navLink {
   color: white;
   display: inline-flex;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   padding: 10px;
   text-decoration: none;
 }
@@ -21,8 +21,8 @@
 }
 .active {
   color: rgb(29, 8, 121);
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   display: inline-flex;
   padding: 10px;
   text-decoration: none;
